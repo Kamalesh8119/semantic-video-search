@@ -61,35 +61,4 @@ Semantic Video Search is a system that allows users to query video content using
 
 ---
 
-## Project Structure
-semantic-video-search/
-│
-├── backend/
-│ ├── main.py
-│ ├── transcripts.json
-│ ├── requirements.txt
-│
-├── frontend/
-│ ├── src/
-│ ├── public/
-│ ├── package.json
-│ ├── vite.config.js
-│
-├── README.md
-├── .gitignore
 
----
-
-## Installation and Setup
-
-### Backend Setup
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload
-
-### Frontend setup
-cd frontend
-npm install
-npm run dev
