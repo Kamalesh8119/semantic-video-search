@@ -1,4 +1,8 @@
 # semantic-video-search
+## Live Demo
+
+Frontend: https://semantic-video-search.vercel.app  
+Backend API: https://kamalesh123-semantic-video-search-api.hf.space
 
 ## Overview
 Semantic Video Search is a system that allows users to query video content using natural language and navigate directly to the most relevant timestamp. It eliminates the need to watch entire videos by retrieving the exact segment where the answer exists.
