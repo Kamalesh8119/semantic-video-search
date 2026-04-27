@@ -8,10 +8,13 @@ from sentence_transformers import SentenceTransformer, util
 # Initialize FastAPI application
 app = FastAPI(title="Semantic Video Search API")
 
-# Enable CORS so frontend (React) can communicate with backend
+# Enable CORS so frontend  can communicate with backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=[
+    "http://localhost:5173",
+    "https://your-vercel-frontend-url.vercel.app"
+]
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -87,7 +90,7 @@ def search_video(request: QueryRequest):
     "video_url": f"https://youtu.be/{video_id}?t={start_time}"
 }
 
-# Health check endpoint
+# to check endpoint
 @app.get("/")
 def root():
     return {"message": "Semantic Video Search API is running"}
