@@ -1,4 +1,4 @@
-
+import os
 import json
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -8,17 +8,20 @@ from sentence_transformers import SentenceTransformer, util
 # Initialize FastAPI application
 app = FastAPI(title="Semantic Video Search API")
 
-# Enable CORS so frontend (React) can communicate with backend
+# Enable CORS so frontend  can communicate with backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Load transcript data from JSON file
 # Each entry contains: id, start, end, timestamp, text
-with open("transcripts.json", "r", encoding="utf-8") as file:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TRANSCRIPT_PATH = os.path.join(BASE_DIR, "transcripts.json")
+
+with open(TRANSCRIPT_PATH, "r", encoding="utf-8") as file:
     transcript_chunks = json.load(file)
 
 # Load sentence-transformer model for semantic embeddings
@@ -87,7 +90,7 @@ def search_video(request: QueryRequest):
     "video_url": f"https://youtu.be/{video_id}?t={start_time}"
 }
 
-# Health check endpoint
+# to check endpoint
 @app.get("/")
 def root():
     return {"message": "Semantic Video Search API is running"}
