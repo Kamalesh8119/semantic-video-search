@@ -1,4 +1,4 @@
-
+import os
 import json
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,17 +11,17 @@ app = FastAPI(title="Semantic Video Search API")
 # Enable CORS so frontend  can communicate with backend
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-    "http://localhost:5173",
-    "https://your-vercel-frontend-url.vercel.app"
-]
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
 # Load transcript data from JSON file
 # Each entry contains: id, start, end, timestamp, text
-with open("transcripts.json", "r", encoding="utf-8") as file:
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+TRANSCRIPT_PATH = os.path.join(BASE_DIR, "transcripts.json")
+
+with open(TRANSCRIPT_PATH, "r", encoding="utf-8") as file:
     transcript_chunks = json.load(file)
 
 # Load sentence-transformer model for semantic embeddings
