@@ -1,7 +1,7 @@
 # semantic-video-search
 ## Live Demo
 
-Frontend: https://semantic-video-search.vercel.app  
+Frontend:https://semantic-video-search-mt06x5cje.vercel.app  
 Backend API: https://kamalesh123-semantic-video-search-api.hf.space
 
 ## Overview
